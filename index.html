@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <script src="script.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <a href=""><i class="icon-library logo-icon"></i></a>
+                    <span><a href="">Your Library</a></span>
+                </div>
+                <span><i class="icon-plus plus" id="add"></i></span>
+            </div>
+
+            <div class="sidebar-options">
+                <ul>
+                    <li><a href=""><i class="icon-plus"></i>Add book</a></li>
+                    <li><a href=""><i class="icon-chat"></i>Community</a></li>
+                    <li><a href=""><i class="icon-cog"></i>Settings</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-other">
+                <button id="get-app"><i class="icon-book"></i>Get app</button>
+                <div class="user">
+                    <div class="profile-pic">
+                        <a href="https://github.com/luciavu/library" target="_blank"><i class="icon-github-circled"></i></a>
+                    </div>
+                    <div class="user-details">
+                        <div class="credits">Created by</div>
+                        <div class="username">luciavu</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <main>
+            <div class="menu">
+                <div class="search">
+                    <i class="icon-search"></i>
+                    <input type="text" name="searchbar" id="searchbar" placeholder="Search for a book">
+                </div>
+                <div class="filter">
+                    <ul>
+                        <li><button class="active">All</button></li>
+                        <li><button>Liked</button></li>
+                        <li><button>Wishlist</button></li>
+                        <li><button>New</button></li>
+                        <li><button>Read</button></li>
+                        <li><button>In progress</button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="books scrollable">
+                <button class="add-book">
+                    <i class="icon-plus"></i>
+                    <div>Add book</div>
+                </button>
+                <div class="book">
+                    <img src="img/cover1.jpg" alt="book cover" class="bookcover">
+                    <div class="title">Book title</div>    
+                    <div class="author">Author</div>
+                    <div class="info">
+                        <div class="status">Read</div>
+                        <span><i class="icon-heart-empty"></i></span>
+                        <span><i class="icon-bookmark-empty"></i></span> 
+                    </div>
+                </div>
+                <div class="book">
+                    <img src="img/cover1.jpg" alt="book cover" class="bookcover">
+                    <div class="title">Book title</div>    
+                    <div class="author">Author</div>
+                    <div class="info">
+                        <div class="status">Read</div>
+                        <span><i class="icon-heart-empty"></i></span>
+                        <span><i class="icon-bookmark-empty"></i></span> 
+                    </div>
+                </div>
+                <div class="book">
+                    <img src="img/cover1.jpg" alt="book cover" class="bookcover">
+                    <div class="title">Book title</div>    
+                    <div class="author">Author</div>
+                    <div class="info">
+                        <div class="status">Read</div>
+                        <span><i class="icon-heart-empty"></i></span>
+                        <span><i class="icon-bookmark-empty"></i></span> 
+                    </div>
+                </div>
+                <div class="book">
+                    <img src="img/cover1.jpg" alt="book cover" class="bookcover">
+                    <div class="title">Book title</div>    
+                    <div class="author">Author</div>
+                    <div class="info">
+                        <div class="status">Read</div>
+                        <span><i class="icon-heart-empty"></i></span>
+                        <span><i class="icon-bookmark-empty"></i></span> 
+                    </div>
+                </div>
+                <div class="book">
+                    <img src="img/cover1.jpg" alt="book cover" class="bookcover">
+                    <div class="title">Book title</div>    
+                    <div class="author">Author</div>
+                    <div class="info">
+                        <div class="status">Read</div>
+                        <span><i class="icon-heart-empty"></i></span>
+                        <span><i class="icon-bookmark-empty"></i></span> 
+                    </div>
+                </div>
+                <div class="book">
+                    <img src="img/cover1.jpg" alt="book cover" class="bookcover">
+                    <div class="title">Book title</div>    
+                    <div class="author">Author</div>
+                    <div class="info">
+                        <div class="status">Read</div>
+                        <span><i class="icon-heart-empty"></i></span>
+                        <span><i class="icon-bookmark-empty"></i></span> 
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
