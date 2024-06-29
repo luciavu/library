@@ -13,6 +13,44 @@
     <title>Library</title>
 </head>
 <body>
+    <div class="modal" id="myModal">
+        <div class="modal-content">
+            <form id="myForm">
+                <div class="form-container">
+                    <div class="form-title">Add book</div>
+                    <div class="close">&times;</div>
+                    <div class="form-bookcover">
+                        <img src="img/cover1.jpg" alt="">
+                    </div>
+    
+                    <div class="form-fields">
+                        <div class="form-booktitle">
+                            <label for="form-booktitle"></label>
+                            <input type="text" id="form-booktitle" name="form-booktitle" placeholder="Title">
+                        </div>
+                        <div class="form-author">
+                            <label for="form-author"></label>
+                            <input type="text" id="form-author" name="form-author" placeholder="Author">
+                        </div>
+                        <div>
+                            <div class="form-status-pages">
+                                <div class="form-pages">
+                                    <label for="form-pages"></label>
+                                    <input type="text" id="form-pages" name="form-pages" placeholder="Pages">
+                                </div>
+                                <div class="form-status">
+                                    <label for="form-status"></label>
+                                    <input type="text" name="" id="">
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <button type="submit" onclick="addBookToLibrary()">Add book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="container">
         <div class="sidebar">
             <div class="sidebar-header">
