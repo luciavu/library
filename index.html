@@ -18,29 +18,35 @@
             <form id="myForm">
                 <div class="form-container">
                     <div class="form-title">Add book</div>
-                    <div class="close">&times;</div>
+                    <div class="close" onclick="toggleModal();">&times;</div>
                     <div class="form-bookcover">
-                        <img src="img/cover1.jpg" alt="">
+                        <input type="file" id="imageUpload" style="display: none;" accept="image/*">
+                        <label for="imageUpload" class="choose-image-button"><i class="icon-library"></i></label>
+                        <div class="image-preview" id="imagePreview">
+                            <img id="previewImage" src="#" alt="Image Preview">
+                        </div>
                     </div>
-    
                     <div class="form-fields">
                         <div class="form-booktitle">
                             <label for="form-booktitle"></label>
-                            <input type="text" id="form-booktitle" name="form-booktitle" placeholder="Title">
+                            <input type="text" id="form-booktitle" name="form-booktitle" placeholder="Title"
+                            required maxlength="50">
                         </div>
                         <div class="form-author">
                             <label for="form-author"></label>
-                            <input type="text" id="form-author" name="form-author" placeholder="Author">
+                            <input type="text" id="form-author" name="form-author" placeholder="Author"
+                            required maxlength="50">
                         </div>
                         <div>
                             <div class="form-status-pages">
                                 <div class="form-pages">
                                     <label for="form-pages"></label>
-                                    <input type="text" id="form-pages" name="form-pages" placeholder="Pages">
+                                    <input type="number" id="form-pages" name="form-pages" placeholder="Pages"
+                                    required max="10000">
                                 </div>
                                 <div class="form-status">
-                                    <label for="form-status"></label>
-                                    <input type="text" name="" id="">
+                                    <label for="is-read">Read</label>
+                                    <input type="checkbox" name="is-read" id="is-read">
                                 </div>
                             </div>
                         </div> 
@@ -58,12 +64,12 @@
                     <a href=""><i class="icon-library logo-icon"></i></a>
                     <span><a href="">Your Library</a></span>
                 </div>
-                <span><i class="icon-plus plus" id="add" onclick="addBookToLibrary()"></i></span>
+                <span><i class="icon-plus plus" id="add" onclick="toggleModal()"></i></span>
             </div>
 
             <div class="sidebar-options">
                 <ul>
-                    <li onclick="addBookToLibrary();" class="add"><i class="icon-plus"></i>Add book</li>
+                    <li onclick="toggleModal();" class="add"><i class="icon-plus"></i>Add book</li>
                     <li><a href=""><i class="icon-chat"></i>Community</a></li>
                     <li><a href=""><i class="icon-cog"></i>Settings</a></li>
                 </ul>
@@ -91,14 +97,13 @@
                     <ul>
                         <li><button onclick="toggleActive('all');" class="active" id="all">All</button></li>
                         <li><button onclick="toggleActive('liked');" id="liked">Liked</button></li>
-                        <li><button onclick="toggleActive('new');" id="new">New</button></li>
+                        <li><button onclick="toggleActive('unread');" id="unread">Unread</button></li>
                         <li><button onclick="toggleActive('read');" id="read">Read</button></li>
-                        <li><button onclick="toggleActive('in-progress');" id="in-progress">In progress</button></li>
                     </ul>
                 </div>
             </div>
             <div class="books scrollable">
-                <button class="add-book" onclick="addBookToLibrary()">
+                <button class="add-book" onclick="toggleModal()">
                     <i class="icon-plus"></i>
                     <div>Add book</div>
                 </button>

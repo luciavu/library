@@ -48,16 +48,14 @@ body {
 
 /* Modal */
 .modal {
-    z-index: 1;
-    /* display: none; */
+    display: none;
     position: fixed;
-    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.4);
 }
 
 form {
@@ -65,6 +63,7 @@ form {
     width:fit-content;
     height: fit-content;
     padding: 1.5rem;
+    border-radius: 0.5rem;
 }
 
 .form-container {
@@ -79,19 +78,57 @@ form {
     grid-column: 1;
     font-weight: 800;
     font-size: 1.8rem;
-    margin-bottom: 1.3rem;
+    margin-bottom: 1.7rem;
 }
 
 .close {
     grid-column: 2;
     grid-row: 1;
     justify-self: end;
+    font-size: 1.4rem;
+    cursor: pointer;
 }
 
-form img {
-    grid-column: 1;
-    grid-row: 1;
+.image-upload-container {
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-bookcover {
+    position: relative;
     width: 12rem;
+    height: 12rem;
+    background-color: rgba(247, 247, 247,1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-bookcover i {
+    color:rgb(133, 133, 133);
+    font-size: 3rem;
+    padding: 4rem;
+}
+
+.image-preview {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    display: block;
     border-radius: 0.5rem;
 }
 
@@ -100,8 +137,9 @@ form img {
     grid-column: 2;
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
-    padding: 0rem 1rem;
+    gap: 1.2rem;
+    padding-left: 1rem;
+    width: 20rem;
 }
 
 form button {
@@ -109,8 +147,8 @@ form button {
     display: inline-flex;
     justify-self: flex-end;
     cursor: pointer;
-    border: none;
-    padding: 0.8rem 1rem;
+    padding: 1.2rem 2rem;
+    margin-top: 1rem;
     border: none;
     border-radius: 3rem;
     font-size: 1rem;
@@ -119,9 +157,39 @@ form button {
 }
 
 input {
-    background-color: rgb(247, 247, 247);
+    background-color: #f7f7f7;
     border: none;
-    border-radius: 0.5;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+form input[type="text" i], input[type="number" i] {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.form-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-status label {
+    font-weight: 700;
+}
+
+.form-status input {
+    font-size: 2rem;
+}
+
+.form-pages {
+    width: 60%;
+}
+
+.form-status-pages {
+    display: flex;
+    gap: 1.5rem;
 }
 
 /* Sidebar */
@@ -242,7 +310,8 @@ main {
     height: 2.4rem;
 }
 
-#searchbar {
+main #searchbar {
+    background-color: white;
     border: none;
     position: absolute;
     border-radius: 3rem;
