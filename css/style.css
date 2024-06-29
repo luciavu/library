@@ -204,7 +204,7 @@ main {
     grid-row: 2;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    grid-template-rows: repeat(auto-fit, 16rem);
+    grid-template-rows: repeat(auto-fit, 17rem);
     grid-auto-rows: 16rem;
     gap: 1rem;
     padding: 3rem;
@@ -236,14 +236,19 @@ main {
     max-width: 10rem;
 }
 
-.status {
-    display: inline-block;
+.status button {
+    cursor: pointer;
     background-color: black;
     border-radius: 1rem;
     color: white;
     margin-top: 0.5rem;
     font-size: 0.7rem;
     padding: 0.2rem 1rem;
+}
+
+.pages {
+    font-size: 0.8rem;
+    color: rgb(89, 89, 89);
 }
 
 .add-book {
@@ -260,6 +265,16 @@ main {
 
 .add-book div {
     font-weight: 700;
+}
+
+.info {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.2rem;
+}
+
+.delete {
+    margin-left: auto;
 }
 
 /* Other */
