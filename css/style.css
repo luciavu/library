@@ -102,7 +102,7 @@ form {
     position: relative;
     width: 12rem;
     height: 12rem;
-    background-color: rgba(247, 247, 247,1);
+    background-color:#f3f3f3;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,7 +147,7 @@ form button {
     display: inline-flex;
     justify-self: flex-end;
     cursor: pointer;
-    padding: 1.2rem 2rem;
+    padding: 1rem 1.6rem;
     margin-top: 1rem;
     border: none;
     border-radius: 3rem;
@@ -157,7 +157,7 @@ form button {
 }
 
 input {
-    background-color: #f7f7f7;
+    background-color: #f3f3f3;
     border: none;
     width: 100%;
     border-radius: 0.5rem;
@@ -190,6 +190,13 @@ form input[type="text" i], input[type="number" i] {
 .form-status-pages {
     display: flex;
     gap: 1.5rem;
+}
+
+.note {
+    grid-column: 1;
+    grid-row: 3;
+    font-size: 0.6rem;
+    margin-top: 0.5rem;
 }
 
 /* Sidebar */
