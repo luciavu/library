@@ -29,14 +29,15 @@ function addBookToLibrary() {
 
     // Check title not already exists
     myLibrary.push(new Book(id, title, bookCover, author, isread, pages, liked));
-    createBook(title, bookCover, author, pages, isread);
+    createBook(id, title, bookCover, author, pages, isread);
     toggleModal();
 }
 
-function createBook(title, cover, author, pages, isread) {
+function createBook(id, title, cover, author, pages, isread) {
     const books = document.querySelector('.books');
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book');
+    bookDiv.classList.add(`id${id}`)
         
     const bookCoverImg = document.createElement('img');
     (cover.startsWith('img/cover')) ? bookCoverImg.src = cover : bookCoverImg.src = 'img/cover1.jpg'; 
@@ -161,14 +162,54 @@ function addEventListeners() {
     });
 }
 
+function likeBook() {
+}
+
+function displayBooks(filter) {
+    myLibrary.forEach(book => {
+        const selectedBook = document.querySelector(`.id${book.id}`);
+        if (selectedBook) {
+            switch (filter) {
+                case 'all':
+                    selectedBook.style.display = 'block';
+                    break;
+                case 'liked':
+                    if (!book.liked) {
+                        selectedBook.style.display = 'none';
+                    } else {
+                        selectedBook.style.display = 'block';
+                    }
+                    break;
+                case 'unread':
+                    if (book.isread) {
+                        selectedBook.style.display = 'none';
+                    } else {
+                        selectedBook.style.display = 'block';
+                    }
+                    break;
+                case 'read':
+                    if (!book.isread) {
+                        selectedBook.style.display = 'none';
+                    } else {
+                        selectedBook.style.display = 'block';
+                    }
+                    break;
+                default:
+                    selectedBook.style.display = 'block';
+                    break;
+            }
+        }
+    });
+}
+
 function addPlaceholderBooks() {
-    myLibrary.push(new Book(0, 'To Kill a Mockingbird', "img/cover1.jpg", 'Harper Lee', true, 376, false));
-    myLibrary.push(new Book(1, 'The Great Gatsby', "img/cover2.jpg", 'F. Scott Fitzgerald', false, 180, false));
-    myLibrary.push(new Book(2, 'A Passage to India', "img/cover1.jpg", 'E.M. Forster', true, 368, false));
-    myLibrary.push(new Book(3, 'Invisible Man', "img/cover1.jpg", 'Ralph Ellison', false, 581, false));
+    myLibrary.push(new Book(0, 'To Kill a Mockingbird', "img/cover3.jpg", 'Harper Lee', true, 376, true));
+    myLibrary.push(new Book(1, 'Invisible Man', "img/cover1.jpg", 'Ralph Ellison', false, 581, true));
+    myLibrary.push(new Book(2, 'The Great Gatsby', "img/cover4.jpg", 'F. Scott Fitzgerald', false, 180, false));
+    myLibrary.push(new Book(3, 'A Passage to India', "img/cover2.jpg", 'E.M. Forster', true, 368, false));
 
     myLibrary.forEach(book => {
-        createBook(book.title, book.bookCover, book.author, book.pages, book.isread);
+        createBook(book.id, book.title, book.bookCover, book.author, book.pages, book.isread);
     })
 }
 

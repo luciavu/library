@@ -51,7 +51,7 @@
                             </div>
                         </div> 
                     </div>
-                    <div class="note">Note* A local server environment is <br> needed for image function to work</div>
+                    <div class="note">In progress: A local server environment is <br> required for image function to work</div>
                     <button type="submit" onclick="event.preventDefault(); addBookToLibrary()">Add book</button>
                 </div>
             </form>
@@ -96,10 +96,10 @@
                 </div>
                 <div class="filter">
                     <ul>
-                        <li><button onclick="toggleActive('all');" class="active" id="all">All</button></li>
-                        <li><button onclick="toggleActive('liked');" id="liked">Liked</button></li>
-                        <li><button onclick="toggleActive('unread');" id="unread">Unread</button></li>
-                        <li><button onclick="toggleActive('read');" id="read">Read</button></li>
+                        <li><button onclick="toggleActive('all'); displayBooks('all');" class="active" id="all">All</button></li>
+                        <li><button onclick="toggleActive('liked'); displayBooks('liked');" id="liked">Liked</button></li>
+                        <li><button onclick="toggleActive('unread'); displayBooks('unread')" id="unread">Unread</button></li>
+                        <li><button onclick="toggleActive('read'); displayBooks('read')" id="read">Read</button></li>
                     </ul>
                 </div>
             </div>
