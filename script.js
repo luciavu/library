@@ -15,8 +15,19 @@ class Book {
 
 function updateIndexes() {
     myLibrary.forEach((book, index) => {
-        book.id = index; 
+        const oldBookDiv = document.querySelector(`.id${book.id}`);
+        if (oldBookDiv) {
+            oldBookDiv.classList.remove(`id${book.id}`);
+            oldBookDiv.classList.add(`id${index}`); // Update class/id to new id
+        }
     });
+
+    myLibrary.forEach((book, index) => {
+        book.id = index;
+        console.log(book.title, book.id);
+    });
+
+
 }
 
 function addBookToLibrary() {
@@ -32,7 +43,6 @@ function addBookToLibrary() {
     let pages = document.getElementById('form-pages').value;
     let liked = false;
 
-    // Check title not already exists
     myLibrary.push(new Book(id, title, bookCover, author, isread, pages, liked));
     createBook(id, title, bookCover, author, pages, isread);
     updateIndexes();
@@ -68,7 +78,8 @@ function createBook(id, title, cover, author, pages, isread) {
     const statusDiv = document.createElement('div');
     statusDiv.classList.add('status');
     const statusButton = document.createElement('button');
-    (isread) ? statusButton.innerHTML = 'Read' : statusButton.innerHTML = 'Unread'
+    (isread) ? statusButton.innerHTML = 'Read' : statusButton.innerHTML = 'Unread';
+    statusButton.classList.add('statusButton')
     statusDiv.appendChild(statusButton);
 
     const heartSpan = document.createElement('span');
@@ -81,7 +92,7 @@ function createBook(id, title, cover, author, pages, isread) {
     deleteSpan.classList.add('delete');
     const deleteIcon = document.createElement('i');
     deleteIcon.classList.add('icon-trash-empty');
-    deleteIcon.addEventListener('click', removeBookFromLibrary);
+    deleteIcon.classList.add('deleteButton');
     deleteSpan.appendChild(deleteIcon);
 
     bookDiv.appendChild(bookCoverImg);
@@ -95,10 +106,15 @@ function createBook(id, title, cover, author, pages, isread) {
     books.appendChild(bookDiv);
 }
 
-
-function removeBookFromLibrary(bookId) {
-    // Find book by ID
-    console.log('remove book');
+function removeBookFromLibrary(book) {
+    const idx = getBookId(book);
+    const bookDiv = book.closest('.book');
+    // Visually remove
+    bookDiv.remove();
+    // Remove from myLibrary storage
+    myLibrary.splice(idx, 1);
+    // Update indexes
+    updateIndexes();
 }
 
 function toggleModal() {
@@ -111,12 +127,6 @@ function toggleModal() {
     } 
 }
 
-function updateLibrary() {
-    for (let book in myLibrary) {
-        console.log(book);
-    }
-}
-
 function toggleActive(button) {
     let target = document.getElementById(button);
     if (target.classList.contains("active")) {
@@ -125,6 +135,41 @@ function toggleActive(button) {
         let currentActive = document.querySelector('.active');
         currentActive.classList.remove('active');
         target.classList.add('active');
+    }
+}
+
+function getBookId(element) {
+    const bookDiv = element.closest('.book');
+    const bookIdx = bookDiv.classList[1];
+    return bookIdx.substring(2); // Get '1' from id1
+
+}
+
+function toggleLike(icon) {
+    const idx = getBookId(icon); // Get '1' from id1
+
+    if (icon.classList.contains('icon-heart-empty')) {
+        icon.classList.remove('icon-heart-empty');
+        icon.classList.add('icon-heart');
+        myLibrary[idx].liked = true;
+    } else {
+        icon.classList.remove('icon-heart');
+        icon.classList.add('icon-heart-empty');
+        myLibrary[idx].liked = false;
+    }
+}
+
+function toggleRead(readStatus) {
+    const idx = getBookId(readStatus); // Get '1' from id1
+
+    if (readStatus.innerHTML == 'Read') {
+        readStatus.innerHTML = 'Unread'
+        myLibrary[idx].isread = false;
+        console.log(myLibrary[idx].title, false)
+    } else {
+        readStatus.innerHTML = 'Read'
+        myLibrary[idx].isread = true;
+        console.log(myLibrary[idx].title, true)
     }
 }
 
@@ -174,22 +219,21 @@ function addEventListeners() {
             toggleLike(event.target);
         }
     });
-}
 
-function toggleLike(icon) {
-    const bookDiv = icon.closest('.book');
-    const bookIdx= bookDiv.classList[1];
-    const idx = bookIdx.substring(2); // Get '1' from id1
+    // Toggling read
+    document.querySelector('.books').addEventListener('click', function(event) {
+        if (event.target.classList.contains('statusButton')) {
+            toggleRead(event.target);
+        }
+    });
 
-    if (icon.classList.contains('icon-heart-empty')) {
-        icon.classList.remove('icon-heart-empty');
-        icon.classList.add('icon-heart');
-        myLibrary[idx].liked = true;
-    } else {
-        icon.classList.remove('icon-heart');
-        icon.classList.add('icon-heart-empty');
-        myLibrary[idx].liked = false;
-    }
+    // Removing book
+    document.querySelector('.books').addEventListener('click', function(event) {
+        if (event.target.classList.contains('deleteButton')) {
+            removeBookFromLibrary(event.target)
+        }
+    });
+    
 }
 
 function displayBooks(filter) {
@@ -240,5 +284,5 @@ function addPlaceholderBooks() {
     })
 }
 
-addEventListeners();
 addPlaceholderBooks();
+addEventListeners();
