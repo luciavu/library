@@ -182,6 +182,9 @@ function resetModal() {
     title.value = '';
     author.value = '';
     pages.value = '';
+    title.placeholder = 'Title';
+    author.placeholder = 'Author';
+    pages.placeholder = 'Pages';
     isread.checked = false;
 }
 
@@ -285,6 +288,24 @@ function searchForBook(searchInput) {
             selectedBook.style.display = 'none';
         }
     });
+}
+
+function checkInputNotEmpty() {
+    const title = document.getElementById('form-booktitle');
+    const author = document.getElementById('form-author');
+    const pages = document.getElementById('form-pages');
+
+    if (!(title.value.length && author.value.length && pages.value.length)) {
+        title.placeholder = 'Title*';
+        author.placeholder = 'Author*';
+        pages.placeholder = 'Pages*';
+        return;
+    } else {
+        title.placeholder = 'Title';
+        author.placeholder = 'Author';
+        pages.placeholder = 'Pages';
+        addBookToLibrary();
+    }
 }
 
 function addPlaceholderBooks() {
