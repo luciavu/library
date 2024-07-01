@@ -1,6 +1,5 @@
 // Temporary library storage method
 const myLibrary = [];
-let idCounter = 4;
 
 class Book {
     constructor(id, title, bookCover, author, isread, pages, liked) {
@@ -14,10 +13,16 @@ class Book {
     }
 }
 
+function updateIndexes() {
+    myLibrary.forEach((book, index) => {
+        book.id = index; 
+    });
+}
+
 function addBookToLibrary() {
     console.log('add book');
     // Assign unique ID
-    let id = idCounter++;
+    const id = myLibrary.length;
 
     // Retrieve values from form
     let title = document.getElementById('form-booktitle').value;
@@ -30,6 +35,7 @@ function addBookToLibrary() {
     // Check title not already exists
     myLibrary.push(new Book(id, title, bookCover, author, isread, pages, liked));
     createBook(id, title, bookCover, author, pages, isread);
+    updateIndexes();
     toggleModal();
 }
 
@@ -68,6 +74,7 @@ function createBook(id, title, cover, author, pages, isread) {
     const heartSpan = document.createElement('span');
     const heartIcon = document.createElement('i');
     heartIcon.classList.add('icon-heart-empty');
+    heartIcon.classList.add('liked');
     heartSpan.appendChild(heartIcon);
 
     const deleteSpan = document.createElement('span');
@@ -160,9 +167,29 @@ function addEventListeners() {
             previewImage.src = '#';
         }
     });
+
+    // Toggling like
+    document.querySelector('.books').addEventListener('click', function(event) {
+        if (event.target.classList.contains('liked')) {
+            toggleLike(event.target);
+        }
+    });
 }
 
-function likeBook() {
+function toggleLike(icon) {
+    const bookDiv = icon.closest('.book');
+    const bookIdx= bookDiv.classList[1];
+    const idx = bookIdx.substring(2); // Get '1' from id1
+
+    if (icon.classList.contains('icon-heart-empty')) {
+        icon.classList.remove('icon-heart-empty');
+        icon.classList.add('icon-heart');
+        myLibrary[idx].liked = true;
+    } else {
+        icon.classList.remove('icon-heart');
+        icon.classList.add('icon-heart-empty');
+        myLibrary[idx].liked = false;
+    }
 }
 
 function displayBooks(filter) {
@@ -203,8 +230,8 @@ function displayBooks(filter) {
 }
 
 function addPlaceholderBooks() {
-    myLibrary.push(new Book(0, 'To Kill a Mockingbird', "img/cover3.jpg", 'Harper Lee', true, 376, true));
-    myLibrary.push(new Book(1, 'Invisible Man', "img/cover1.jpg", 'Ralph Ellison', false, 581, true));
+    myLibrary.push(new Book(0, 'To Kill a Mockingbird', "img/cover3.jpg", 'Harper Lee', true, 376, false));
+    myLibrary.push(new Book(1, 'Invisible Man', "img/cover1.jpg", 'Ralph Ellison', false, 581, false));
     myLibrary.push(new Book(2, 'The Great Gatsby', "img/cover4.jpg", 'F. Scott Fitzgerald', false, 180, false));
     myLibrary.push(new Book(3, 'A Passage to India', "img/cover2.jpg", 'E.M. Forster', true, 368, false));
 
