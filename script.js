@@ -3,7 +3,7 @@ const myLibrary = [];
 
 class Book {
     constructor(id, title, bookCover, author, isread, pages, liked) {
-        this.id = id;
+        this.id = id; // Based on its index, updated upon add or remove
         this.title = title;
         this.bookCover = bookCover;
         this.author = author;
@@ -25,8 +25,6 @@ function updateIndexes() {
     myLibrary.forEach((book, index) => {
         book.id = index;
     });
-
-
 }
 
 function addBookToLibrary() {
@@ -144,7 +142,7 @@ function getBookId(element) {
 }
 
 function toggleLike(icon) {
-    const idx = getBookId(icon); // Get '1' from id1
+    const idx = getBookId(icon);
 
     if (icon.classList.contains('icon-heart-empty')) {
         icon.classList.remove('icon-heart-empty');
@@ -158,7 +156,7 @@ function toggleLike(icon) {
 }
 
 function toggleRead(readStatus) {
-    const idx = getBookId(readStatus); // Get '1' from id1
+    const idx = getBookId(readStatus);
 
     if (readStatus.innerHTML == 'Read') {
         readStatus.innerHTML = 'Unread'
