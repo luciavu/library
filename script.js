@@ -24,14 +24,12 @@ function updateIndexes() {
 
     myLibrary.forEach((book, index) => {
         book.id = index;
-        console.log(book.title, book.id);
     });
 
 
 }
 
 function addBookToLibrary() {
-    console.log('add book');
     // Assign unique ID
     const id = myLibrary.length;
 
@@ -56,7 +54,7 @@ function createBook(id, title, cover, author, pages, isread) {
     bookDiv.classList.add(`id${id}`)
         
     const bookCoverImg = document.createElement('img');
-    (cover.startsWith('img/cover')) ? bookCoverImg.src = cover : bookCoverImg.src = 'img/cover1.jpg'; 
+    (cover.startsWith('img/cover')) ? bookCoverImg.src = cover : bookCoverImg.src = 'img/default.png'; 
     // Replace line above when learn npm module
     bookCoverImg.classList.add('bookcover');
 
@@ -165,11 +163,9 @@ function toggleRead(readStatus) {
     if (readStatus.innerHTML == 'Read') {
         readStatus.innerHTML = 'Unread'
         myLibrary[idx].isread = false;
-        console.log(myLibrary[idx].title, false)
     } else {
         readStatus.innerHTML = 'Read'
         myLibrary[idx].isread = true;
-        console.log(myLibrary[idx].title, true)
     }
 }
 
@@ -233,7 +229,12 @@ function addEventListeners() {
             removeBookFromLibrary(event.target)
         }
     });
-    
+
+    // Searching for book
+    const searchBar = document.getElementById('searchbar')
+    searchBar.addEventListener('input', function() {
+        searchForBook(searchBar.value);
+    });
 }
 
 function displayBooks(filter) {
@@ -269,6 +270,19 @@ function displayBooks(filter) {
                     selectedBook.style.display = 'block';
                     break;
             }
+        }
+    });
+}
+
+function searchForBook(searchInput) {
+    const lowerCaseInput = searchInput.toLowerCase();
+    myLibrary.forEach((book) => {
+        const selectedBook = document.querySelector(`.id${book.id}`);
+        if (book.title.toLowerCase().includes(lowerCaseInput) 
+            || book.author.toLowerCase().includes(lowerCaseInput)) {
+            selectedBook.style.display = 'block';
+        } else {
+            selectedBook.style.display = 'none';
         }
     });
 }
