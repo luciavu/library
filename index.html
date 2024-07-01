@@ -30,19 +30,18 @@
                         <div class="form-booktitle">
                             <label for="form-booktitle"></label>
                             <input type="text" id="form-booktitle" name="form-booktitle" placeholder="Title"
-                            required maxlength="50">
+                            required maxlength="20">
                         </div>
                         <div class="form-author">
                             <label for="form-author"></label>
-                            <input type="text" id="form-author" name="form-author" placeholder="Author"
-                            required maxlength="50">
+                            <input type="text" id="form-author" name="form-author" placeholder="Author" required maxlength="20">
                         </div>
                         <div>
                             <div class="form-status-pages">
                                 <div class="form-pages">
                                     <label for="form-pages"></label>
                                     <input type="number" id="form-pages" name="form-pages" placeholder="Pages"
-                                    required max="10000">
+                                    required>
                                 </div>
                                 <div class="form-status">
                                     <label for="is-read">Read</label>
@@ -52,7 +51,7 @@
                         </div> 
                     </div>
                     <div class="note">In progress: A local server environment is <br> required for image function to work</div>
-                    <button type="submit" onclick="event.preventDefault(); addBookToLibrary()">Add book</button>
+                    <button type="submit" onclick="event.preventDefault(); checkInputNotEmpty();" >Add book</button>
                 </div>
             </form>
         </div>

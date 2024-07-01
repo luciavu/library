@@ -13,11 +13,76 @@ body {
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 630px) {
     main .search #searchbar {
-        width: 90%;
+        width: 50%;
+    }
+
+    .modal .form-container {
+        display: grid;
+        grid-template-rows: auto auto auto auto auto auto;
+        align-items: center;
+        justify-items: center;
+        gap: 1rem 0;
+    }
+    
+    form .form-title {
+        grid-row: 1;
+        grid-column: 1;
+        margin-bottom: 0;
+        justify-self: start;
+    }
+
+    form .close {
+        grid-column: 1;
+    }
+
+    form .form-bookcover {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    form .form-fields {
+        grid-column: 1;
+        grid-row: 4;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        padding-left: 0rem;
+        width: 12rem
+    }
+
+    body form button {
+        grid-row: 5;
+        grid-column: 1;
+        place-self: start;
+        margin-left: 1rem;
+    }
+
+    body form .note {
+        margin-top: -0.7rem;
+        margin-bottom: 1rem;
+    }
+
+    body form input {
+    width: 90%;
+    }
+
+    body form input[type="text" i], form input[type="number" i] {
+        padding: 0.8rem;
+    }
+    
+    form .form-pages {
+        width: 30%
+    }
+    
+    form .form-status-pages {
+        display: flex;
+        gap: 0.5rem;
+        width: max-content;
     }
 }
+
 @media only screen and (max-width: 1023px) {
     body .container {
         grid-template-columns: auto;
@@ -479,4 +544,8 @@ input[type="text" i] {
     padding-block: 0;
     padding-inline: 0;
     padding: 0;
+}
+
+.icon-heart {
+    color: red;
 }
