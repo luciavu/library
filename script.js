@@ -135,9 +135,10 @@ function toggleActive(button) {
 }
 
 function getBookId(element) {
+    // E.g. Get '1' from div class of 'id1'
     const bookDiv = element.closest('.book');
     const bookIdx = bookDiv.classList[1];
-    return bookIdx.substring(2); // Get '1' from id1
+    return bookIdx.substring(2); 
 
 }
 
@@ -168,6 +169,7 @@ function toggleRead(readStatus) {
 }
 
 function resetModal() {
+    // Clear form values and * reminders
     const previewImage = document.getElementById('previewImage');
     const preview = document.getElementById('imagePreview');
     const title = document.getElementById('form-booktitle');
@@ -239,6 +241,7 @@ function addEventListeners() {
 }
 
 function displayBooks(filter) {
+    // Hide/Show books based on liked or isread values
     myLibrary.forEach(book => {
         const selectedBook = document.querySelector(`.id${book.id}`);
         if (selectedBook) {
@@ -276,6 +279,7 @@ function displayBooks(filter) {
 }
 
 function searchForBook(searchInput) {
+    // Show books matching search input -> either author or title match
     const lowerCaseInput = searchInput.toLowerCase();
     myLibrary.forEach((book) => {
         const selectedBook = document.querySelector(`.id${book.id}`);
@@ -289,6 +293,7 @@ function searchForBook(searchInput) {
 }
 
 function checkInputNotEmpty() {
+    // Check and remind input cannot be empty
     const title = document.getElementById('form-booktitle');
     const author = document.getElementById('form-author');
     const pages = document.getElementById('form-pages');
