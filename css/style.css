@@ -7,12 +7,17 @@ body {
     margin: 0;
 }
 
-@media only screen and (min-width: 1441px) {
+@media only screen and (min-width: 1500px) {
     * {
-        font-size: 32px;
+        font-size: 24px;
     }
 }
 
+@media only screen and (max-width: 500px) {
+    main .search #searchbar {
+        width: 90%;
+    }
+}
 @media only screen and (max-width: 1023px) {
     body .container {
         grid-template-columns: auto;
@@ -34,10 +39,6 @@ body {
 
     main #searchbar {
         width: 50%;
-    }
-
-    main .books {
-        grid-template-rows: repeat(auto-fit, minmax(16rem, 1fr));
     }
 }
 
@@ -237,7 +238,7 @@ form input[type="text" i], input[type="number" i] {
 }
 
 .sidebar-options a {
-    color: rgb(89, 89, 89);   
+    color: rgb(89, 89, 89);
 }
 
 .sidebar li {
@@ -252,6 +253,8 @@ form input[type="text" i], input[type="number" i] {
 
 li.add {
     color: rgb(89, 89, 89); 
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 .sidebar li i {
     margin-right: 1.5rem;
@@ -362,8 +365,7 @@ main #searchbar {
     grid-row: 2;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    grid-template-rows: repeat(auto-fit, 17rem);
-    grid-auto-rows: 16rem;
+    grid-auto-rows: min-content;
     gap: 1rem;
     padding: 3rem;
     padding-top: 1rem;
